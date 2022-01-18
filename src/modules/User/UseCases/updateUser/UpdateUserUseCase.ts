@@ -1,7 +1,7 @@
 import { users } from '../../model/UserModel';
 import { hash, compare } from 'bcrypt';
 
-interface ICreateUser {
+interface IUpdateUser {
   username: string;
   last_password: string;
   new_password: string;
@@ -14,7 +14,7 @@ export class UpdateUserUseCase {
     new_email,
     last_password,
     new_password,
-  }: ICreateUser) {
+  }: IUpdateUser) {
     // em caso de troca de senha verificar se coincide antes de alterar
     if (new_password) {
       const findDataUser = await users.findOne({ username });

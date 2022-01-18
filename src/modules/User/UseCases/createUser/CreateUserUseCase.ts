@@ -9,6 +9,7 @@ interface ICreateUser {
 
 export class CreateUserUseCase {
   async execute({ username, email, password }: ICreateUser) {
+    
     //verificar se existe no Banco
     const checkIfEmailAlreadyExists = await users.findOne({ email });
     const checkIfUsernameAlreadyExists = await users.findOne({ username });
