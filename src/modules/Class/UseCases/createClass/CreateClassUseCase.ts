@@ -19,8 +19,9 @@ export class CreateClassUseCase {
   }: ICreateClass) {
     //verificar se existe no Banco
     const checkIfVideoAlreadyExists = await classes.findOne({ video });
+    const checkIfClassNameAlreadyExists = await classes.findOne({ name });
 
-    if (checkIfVideoAlreadyExists) {
+    if (checkIfVideoAlreadyExists || checkIfClassNameAlreadyExists) {
       return 'Class already Exists';
     }
 
