@@ -1,4 +1,4 @@
-import { classes } from '../../Class/model/ClassModel';
+import { classes } from '../../model/ClassModel';
 
 interface ICreateClass {
   name: string;

@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { CreateClassController } from '../UseCases/createClass/CreateClassController'
-import { ShowAllClassesController } from '../UseCases/showAllClasses/ShowAllClassesController'
+import { CreateClassController } from './UseCases/createClass/CreateClassController'
+import { ShowAllClassesController } from './UseCases/showAllClasses/ShowAllClassesController'
 import { checkAuth } from '../../middleware/check-auth'
 
 const classRoutes = Router()
