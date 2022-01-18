@@ -1,7 +1,7 @@
 import { classes } from '../../Class/model/ClassModel';
 import { format } from 'date-fns'
 
-interface ICreateUser {
+interface ICreateClass {
   name: string;
   description: string;
   video: string;
@@ -16,7 +16,7 @@ export class CreateClassUseCase {
     video,
     date_init,
     date_end,
-  }: ICreateUser) {
+  }: ICreateClass) {
     //verificar se existe no Banco
     const checkIfVideoAlreadyExists = await classes.findOne({ video });
 
