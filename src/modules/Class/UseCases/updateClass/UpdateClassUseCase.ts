@@ -24,20 +24,22 @@ export class UpdateClassUseCase {
       video,
       updated_at: Date.now().toString(),
     };
-    const findDataUser = await classes.findOneAndUpdate(find, update);
+    const findDataClass = await classes.findOneAndUpdate(find, update);
 
-    if (!findDataUser) {
+    if (!findDataClass) {
       return 'Not found data!';
+    }else {
+       
+      const view = {
+        ok:true,
+        name,
+        video,
+        description,
+        date_init,
+        date_end,
+      }
+      return view;
     }
-    
-    const view = {
-      ok:true,
-      name,
-      video,
-      description,
-      date_init,
-      date_end,
-    }
-    return view;
+   
   }
 }
