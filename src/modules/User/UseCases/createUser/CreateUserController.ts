@@ -5,19 +5,21 @@ export class CreateUserController {
   async handle(request: Request, response: Response) {
     const { username, password, email } = request.body;
 
-    if(!username || !password || !email) {
-      return response.status(400).json({ ok: false, why: 'Data missing!' })
+    if (!username || !password || !email) {
+      return response.status(400).json({ ok: false, why: 'Data missing!' });
     }
 
-    
     const createUserUseCase = new CreateUserUseCase();
 
     const result = await createUserUseCase.execute({
       username,
       password,
-      email
+      email,
     });
+    if (result === 'Email already Exists' || result === 'Username already') {
+      return response.status(400).json({ ok: false, why: result });
+    }
 
-    return response.json(result)
+    return response.json(result);
   }
 }
