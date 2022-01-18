@@ -30,6 +30,7 @@ export class CreateClassUseCase {
       name,
       description,
       video,
+      total_comments:0,
       date_init,
       date_end,
       date_create:Date.now().toString(),
