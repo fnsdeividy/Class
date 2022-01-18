@@ -15,7 +15,6 @@ export class AuthenticateUserUseCase {
     if (!user) {
       return 'Username or password invalid!'
     }
-    console.log(user)
     // Verificar se senha corresponde ao username
     const passwordMatch = await compare(password, user.password);
 

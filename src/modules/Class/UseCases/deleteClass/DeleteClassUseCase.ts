@@ -2,7 +2,6 @@ import { classes } from '../../model/ClassModel';
 
 interface IDeleteClass {
   name: string;
-  
 }
 
 export class DeleteClassUseCase {
@@ -11,8 +10,6 @@ export class DeleteClassUseCase {
   }: IDeleteClass) {
     const findDataUser = await classes.findOneAndDelete({name})
 
-    console.log(findDataUser)
-    
     if (!findDataUser) {
       return 'Not found data!';
     }

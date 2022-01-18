@@ -6,7 +6,7 @@ export class CreateUserController {
     const { username, password, email } = request.body;
 
     if (!username || !password || !email) {
-      return response.status(400).json({ ok: false, why: 'Data missing!' });
+      return response.status(400).json({ ok: false, why: 'Missing data!' });
     }
 
     const createUserUseCase = new CreateUserUseCase();
