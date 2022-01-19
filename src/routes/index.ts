@@ -9,6 +9,6 @@ routes.use('/users', userRoutes);
 
 routes.use('/classes', classRoutes)
 
-routes.use('/comment', commentsRoutes)
+routes.use('/comments', commentsRoutes)
 
 export { routes }

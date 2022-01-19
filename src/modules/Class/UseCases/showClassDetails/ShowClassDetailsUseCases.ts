@@ -2,7 +2,7 @@ import { classes } from '../../model/ClassModel';
 import { comments } from '../../../Comment/model/CommentModel';
 
 interface IShowClassDetails {
-  name: string;
+  id: string;
   description?: string;
   video?: string;
   date_init?: Date;
@@ -10,8 +10,14 @@ interface IShowClassDetails {
 }
 
 export class ShowClassDetailsUseCases {
-  async execute({ name }: IShowClassDetails) {
-    const ClassDetail = await classes.findOne({ name });
+  async execute({ id }: IShowClassDetails) {
+    
+    //verificar hash do mongo
+    if(!id.match(/^[0-9a-fA-F]{24}$/)){
+      return 'Not found class'
+    }
+    // Buscar  
+    const ClassDetail = await classes.findById({ _id:id });
 
     if (!ClassDetail) {
       return 'Not found class';

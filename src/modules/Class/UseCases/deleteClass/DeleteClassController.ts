@@ -3,16 +3,15 @@ import { DeleteClassUseCase } from './DeleteClassUseCase';
 
 export class DeleteClassController {
   async handle(request: Request, response: Response) {
-    const param = request.params.id;
-    const name = param.toString();
+    const id = request.params.id.toString();
 
-    if (!name) {
-      return response.status(400).json({ ok: false, why: 'Classname is missing!' });
+    if (!id) {
+      return response.status(400).json({ ok: false, why: 'Class is missing!' });
     }
 
     const deleteClassUseCase = new DeleteClassUseCase();
 
-    const result = await deleteClassUseCase.execute({ name });
+    const result = await deleteClassUseCase.execute({ id });
     if (result === 'Not found data!') {
       return response.status(400).json({ ok: false, why: result });
     }

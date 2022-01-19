@@ -1,14 +1,14 @@
 import { classes } from '../../model/ClassModel';
 
 interface IDeleteClass {
-  name: string;
+  id: string;
 }
 
 export class DeleteClassUseCase {
   async execute({
-    name
+    id
   }: IDeleteClass) {
-    const findDataUser = await classes.findOneAndDelete({name})
+    const findDataUser = await classes.findOneAndDelete({id})
 
     if (!findDataUser) {
       return 'Not found data!';
@@ -16,7 +16,7 @@ export class DeleteClassUseCase {
     
     const view = {
       ok:true,
-      deleted:name
+      deleted:findDataUser
     }
     return view;
   }

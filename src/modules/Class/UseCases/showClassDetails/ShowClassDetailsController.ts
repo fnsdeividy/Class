@@ -3,11 +3,10 @@ import { ShowClassDetailsUseCases } from './ShowClassDetailsUseCases';
 
 export class ShowClassDetailsController {
   async handle(request: Request, response: Response) {
-    const param = request.params.id;
-    const name = param.toString();
+    const id = request.params.id.toString();
     const showClassDetailsUseCases = new ShowClassDetailsUseCases();
 
-    const result = await showClassDetailsUseCases.execute({ name });
+    const result = await showClassDetailsUseCases.execute({ id });
     if (result === 'Not found class') {
       return response.status(400).json({ ok: false, why: result });
     }
