@@ -16,8 +16,11 @@ export class CreateCommentController {
 
     const result = await createCommentUseCase.execute({
       comment,
-      class_id
+      class_id,
     });
+    if (result === 'FAILED: Not create') {
+      return response.status(400).json({ ok: false, result });
+    }
 
     return response.json(result);
   }
