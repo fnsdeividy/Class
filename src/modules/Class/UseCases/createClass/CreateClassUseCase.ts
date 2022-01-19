@@ -1,5 +1,4 @@
 import { classes } from '../../model/ClassModel';
-import { format } from 'date-fns'
 
 interface ICreateClass {
   name: string;
