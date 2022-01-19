@@ -1,4 +1,5 @@
 import { classes } from '../../model/ClassModel';
+import { comments } from '../../../Comment/model/CommentModel';
 
 interface IShowClassDetails {
   name: string;
@@ -15,12 +16,14 @@ export class ShowClassDetailsUseCases {
     if (!ClassDetail) {
       return 'Not found class';
     }
+    const last_3_comments = await comments.find({class_id:ClassDetail._id}).limit(3)
 
     const view = {
-      namer: ClassDetail.name,
+      name: ClassDetail.name,
       description: ClassDetail.description,
       date_init: ClassDetail.date_init,
       date_end: ClassDetail.date_end,
+      comments: last_3_comments,
     };
 
     return view;
