@@ -7,27 +7,24 @@ interface ICreateComment {
 }
 
 export class CreateCommentUseCase {
-  async execute({
-    comment,
-    class_id
-  }: ICreateComment) {
-    const findClass = await classes.findById({_id:class_id})
-    const Totalcomments = findClass.total_comments
+  async execute({ comment, class_id }: ICreateComment) {
+    const findClass = await classes.findById({ _id: class_id });
+    const Totalcomments = findClass.total_comments;
     const update = {
-      total_comments:Totalcomments + 1
-    }
+      total_comments: Totalcomments + 1,
+    };
 
     const commentEntity = await comments.insertMany({
       class_id,
       comment,
-      date_create:Date.now().toString()
+      date_create: Date.now().toString(),
     });
 
-    if(!commentEntity) {
-      return 'FAILED: Not create'
+    if (!commentEntity) {
+      return 'FAILED: Not create';
     }
 
-    await classes.updateOne(findClass, update ) 
+    await classes.updateOne(findClass, update);
 
     return commentEntity;
   }

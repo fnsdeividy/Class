@@ -29,10 +29,10 @@ export class CreateClassUseCase {
       name,
       description,
       video,
-      total_comments:0,
+      total_comments: 0,
       date_init,
       date_end,
-      date_create:Date.now().toString(),
+      date_create: Date.now().toString(),
     });
 
     //retornar sem a senha por segurança

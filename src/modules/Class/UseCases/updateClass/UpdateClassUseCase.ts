@@ -28,18 +28,16 @@ export class UpdateClassUseCase {
 
     if (!findDataClass) {
       return 'Not found data!';
-    }else {
-       
+    } else {
       const view = {
-        ok:true,
+        ok: true,
         name,
         video,
         description,
         date_init,
         date_end,
-      }
+      };
       return view;
     }
-   
   }
 }

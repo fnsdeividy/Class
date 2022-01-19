@@ -12,6 +12,6 @@ export class AuthenticateUserController {
       password,
     });
 
-    return response.json({ok:true, token:result});
+    return response.json({ ok: true, token: result });
   }
 }

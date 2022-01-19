@@ -19,7 +19,7 @@ export class UpdateUserUseCase {
     if (new_password) {
       const findDataUser = await users.findOne({ username });
       if (!findDataUser) {
-        return 'Not found data!'
+        return 'Not found data!';
       }
       const comparePassword = await compare(
         last_password,
@@ -30,7 +30,7 @@ export class UpdateUserUseCase {
 
         await users.updateOne(findDataUser, { password: hashPassword });
       } else if (!comparePassword) {
-        return 'passwords do not match'
+        return 'passwords do not match';
       }
     }
 
@@ -42,8 +42,8 @@ export class UpdateUserUseCase {
     };
     const findDataUser = await users.findOneAndUpdate(find, update);
 
-    if(!findDataUser) {
-      return 'Not found data!'
+    if (!findDataUser) {
+      return 'Not found data!';
     }
     //retornar sem a senha por segurança
     const view = {

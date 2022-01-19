@@ -5,19 +5,17 @@ interface IDeleteClass {
 }
 
 export class DeleteClassUseCase {
-  async execute({
-    id
-  }: IDeleteClass) {
-    const findDataUser = await classes.findOneAndDelete({id})
+  async execute({ id }: IDeleteClass) {
+    const findDataUser = await classes.findOneAndDelete({ id });
 
     if (!findDataUser) {
       return 'Not found data!';
     }
-    
+
     const view = {
-      ok:true,
-      deleted:findDataUser
-    }
+      ok: true,
+      deleted: findDataUser,
+    };
     return view;
   }
 }

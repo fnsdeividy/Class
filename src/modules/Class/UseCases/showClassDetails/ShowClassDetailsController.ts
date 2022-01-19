@@ -7,7 +7,7 @@ export class ShowClassDetailsController {
     const showClassDetailsUseCases = new ShowClassDetailsUseCases();
 
     const result = await showClassDetailsUseCases.execute({ id });
-    if (result === 'Not found class') {
+    if (result === 'Not found class' || result === 'Invalid id') {
       return response.status(400).json({ ok: false, why: result });
     }
 

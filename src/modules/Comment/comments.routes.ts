@@ -1,20 +1,18 @@
-import { Router } from 'express'
-import { CreateCommentController } from './UseCases/createComment/CreateCommentController'
-import { ShowCommentController } from './UseCases/showComment/ShowCommentController'
-import { DeleteCommentController } from './UseCases/deleteComment/DeleteCommentController'
+import { Router } from 'express';
+import { CreateCommentController } from './UseCases/createComment/CreateCommentController';
+import { ListCommentsController } from './UseCases/listComments/ListCommentsController';
+import { DeleteCommentController } from './UseCases/deleteComment/DeleteCommentController';
 
-import { checkAuth } from '../../middleware/check-auth'
+import { checkAuth } from '../../middleware/check-auth';
 
-const commentsRoutes = Router()
+const commentsRoutes = Router();
 
-const createCommentController = new CreateCommentController()
-const showCommentController = new ShowCommentController()
-const deleteCommentController = new DeleteCommentController()
+const createCommentController = new CreateCommentController();
+const listCommentsController = new ListCommentsController();
+const deleteCommentController = new DeleteCommentController();
 
+commentsRoutes.post('/', checkAuth, createCommentController.handle);
+commentsRoutes.get('/', checkAuth, listCommentsController.handle);
+commentsRoutes.delete('/:id', checkAuth, deleteCommentController.handle);
 
-commentsRoutes.post('/', checkAuth, createCommentController.handle)
-commentsRoutes.get('/', checkAuth, showCommentController.handle)
-commentsRoutes.delete('/:id', checkAuth, deleteCommentController.handle)
-
-
-export { commentsRoutes }
+export { commentsRoutes };

@@ -5,7 +5,9 @@ export class UpdateUserController {
   async handle(request: Request, response: Response) {
     const { username, new_email, last_password, new_password } = request.body;
     if (!username) {
-      return response.status(400).json({ ok: false, why: 'Username is missing!' });
+      return response
+        .status(400)
+        .json({ ok: false, why: 'Username is missing!' });
     }
 
     const updateUserUseCase = new UpdateUserUseCase();

@@ -10,10 +10,10 @@ interface IAuthenticateUser {
 export class AuthenticateUserUseCase {
   async execute({ username, password }: IAuthenticateUser) {
     // Receber username, password
-    const user:any = await users.findOne({username})
+    const user: any = await users.findOne({ username });
 
     if (!user) {
-      return 'Username or password invalid!'
+      return 'Not found Data!';
     }
     // Verificar se senha corresponde ao username
     const passwordMatch = await compare(password, user.password);
@@ -24,7 +24,6 @@ export class AuthenticateUserUseCase {
     // Gerar o token
     const token = sign({ username }, '1gef20ce0cad89a33gjkltyb35t1t4ns', {
       subject: user.username,
-      expiresIn: '1d',
     });
     return token;
   }
