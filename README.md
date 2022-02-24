@@ -1,22 +1,18 @@
-### TinDin
-
-## Sobre o Projeto
-
-API criada para cadastro de aulas e comentários, onde o usuário poderá: 
+### Class
 -
-- [x] Se cadastrar 
-- [x] Atualizar seus dados
-- [x] Logar 
+- [x] SignUp
+- [x] Update data user
+- [x] SignIn
 -
-- [x] Cadastrar uma aula
-- [x] Atualizar dados de uma aula
-- [x] Listar todas as aulas
-- [x] Listar detalhes de uma determinada aula
-- [x] Apagar uma aula
+- [x] Add a class
+- [x] Update a class
+- [x] List all classes
+- [x] List one class details
+- [x] Delete a class
 -
-- [x] Comentar aulas
-- [x] Listar comentários
-- [x] Deletar comentário
+- [x] Comment a class
+- [x] List all comments
+- [x] Delete a comment
 
 ## Contato
 
